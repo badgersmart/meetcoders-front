@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - "6"
+  - "5"
+  - "4"
+sudo: false
+cache:
+  directories:
+    - node_modules
+before_script:
+  - "npm install -g bower"
+  - "bower install"
+  - "npm install -g polymer-cli"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+script:
+  - "polymer test"
