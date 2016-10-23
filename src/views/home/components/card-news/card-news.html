@@ -1,0 +1,81 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`card-news`
+
+
+@demo demo/index.html
+-->
+
+<dom-module id="card-news">
+  <template>
+
+    <style is="custom-style">
+      paper-card.rate { @apply(--layout-horizontal); }
+      .rate-image {
+        width: 150px;
+        height: 170px;
+        background: url('images/defaultImage.png');
+        background-size: cover;
+      }
+      .rate-content {
+        @apply(--layout-flex);
+        float: left;
+      }
+      .rate-header {
+         @apply(--paper-font-headline);
+         font-sieze:16px;
+      }
+      .rate.description{
+        font-size:8px;
+      }
+      .rate-name { color: var(--paper-grey-600); margin: 10px 0; }
+      paper-icon-button.rate-icon {
+        --iron-icon-fill-color: white;
+        --iron-icon-stroke-color: var(--paper-grey-600);
+      }
+    </style>
+    <paper-card class="rate">
+      <div class="rate-content">
+        <div class="card-content">
+          <h3>{{title}}</h3>
+            <p>{{description}}</p>
+        </div>
+      </div>
+      <img class="rate-image" src="{{image}}" alt="" />
+  </template>
+  <script>
+    Polymer({
+
+      is: 'card-news',
+
+      properties: {
+        id: {
+          type: Number,
+          observer: '_picturePosition',
+        },
+        title: {
+          type: String,
+          value: 'card-news',
+        },
+        image: {
+          type: String,
+          value: 'card-news',
+        },
+        description: {
+          type: String,
+          value: 'card-news',
+        }
+      },
+      _picturePosition: function(){
+        if(this.id % 2 !=0){
+          console.log('impar');
+        }
+        else{
+          console.log('par');
+        }
+      }
+
+    });
+  </script>
+</dom-module>

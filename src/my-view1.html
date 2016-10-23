@@ -9,51 +9,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
-
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
 <dom-module id="my-view1">
-
-  <template>
-
-    <style>
-      :host {
-        display: block;
-        padding: 10px;
-      }
-      .card {
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        padding: 16px;
-        margin: 24px;
-        border-radius: 5px;
-        background-color: #fff;
-        color: #757575;
-      }
-      .circle {
-        display: inline-block;
-        height: 64px;
-        width: 64px;
-        border-radius: 50%;
-        background: #ddd;
-        line-height: 64px;
-        font-size: 30px;
-        color: #555;
-        text-align: center;
-      }
-      h1 {
-        font-size: 22px;
-        margin: 16px 0;
-        color: #212121;
-      }
-    </style>
-
-    <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+<style is="custom-style">
+  paper-card.rate { @apply(--layout-horizontal); }
+  .rate-image {
+    width: 100px;
+    height: 170px;
+    background: url('./donuts.png');
+    background-size: cover;
+  }
+  .rate-content {
+    @apply(--layout-flex);
+    float: left;
+  }
+  .rate-header { @apply(--paper-font-headline); }
+  .rate-name { color: var(--paper-grey-600); margin: 10px 0; }
+  paper-icon-button.rate-icon {
+    --iron-icon-fill-color: white;
+    --iron-icon-stroke-color: var(--paper-grey-600);
+  }
+</style>
+<paper-card class="rate">
+  <div class="rate-content">
+    <div class="card-content">
+      <div class="rate-header">Rate this album</div>
+      <div class="rate-name">Mac Miller</div>
+      <div>Live from space</div>
     </div>
-
-  </template>
-
+    <div class="card-actions">
+      <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
+      <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
+      <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
+      <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
+      <paper-icon-button class="rate-icon" icon="star"></paper-icon-button>
+    </div>
+  </div>
+  <div class="rate-image"></div>
+</paper-card>
   <script>
 
     Polymer({
