@@ -11,7 +11,14 @@
   <template>
 
     <style is="custom-style">
-      paper-card.rate { @apply(--layout-horizontal); }
+      :host{
+        display:flex;
+        flex-direction: row;
+      }
+      paper-card.rate { 
+        display:flex; 
+        flex: 1;
+      }
       .rate-image {
         width: 150px;
         height: 170px;
@@ -20,7 +27,9 @@
       }
       .rate-content {
         @apply(--layout-flex);
-        float: left;
+      }
+      .right{
+        flex-direction: row-reverse;
       }
       .rate-header {
          @apply(--paper-font-headline);
@@ -35,8 +44,8 @@
         --iron-icon-stroke-color: var(--paper-grey-600);
       }
     </style>
-    <paper-card class="rate">
-      <div class="rate-content">
+    <paper-card id="rate" class="rate">
+      <div id="content" class="rate-content">
         <div class="card-content">
           <h3>{{title}}</h3>
             <p>{{description}}</p>
@@ -68,11 +77,15 @@
         }
       },
       _picturePosition: function(){
+        console.log(this.id)
         if(this.id % 2 !=0){
           console.log('impar');
+          this.toggleClass("left", true, this.$.rate);
         }
         else{
           console.log('par');
+
+          this.toggleClass("right", true, this.$.rate);
         }
       }
 

@@ -7,7 +7,7 @@
 
 <dom-module id="app-home">
   <template>
-    <style import="home-style"></style>
+  <style include="home-style"></style>
     <iron-ajax
     auto
     url="./news.json"
@@ -20,11 +20,18 @@
     last-response="{{sliderImage}}"></iron-ajax>
   <l2t-paper-slider class="sliders" total-slides="{{imagesSize}}">
     <template is="dom-repeat" items="{{sliderImage}}" as="images">
-      <paper-slide style="background-image: url('https://placeholdit.imgix.net/~text?txtsize=28&amp;bg=DCEDC8&amp;txtclr=212121&amp;txt=300%C3%97300&amp;w=300&amp;h=300&amp;fm=png');"></paper-slide>
+      <paper-slide 
+        style="background-image: url('https://placeholdit.imgix.net/~text?txtsize=28&amp;bg=DCEDC8&amp;txtclr=212121&amp;txt=300%C3%97300&amp;w=300&amp;h=300&amp;fm=png');">
+      </paper-slide>
     </template>
   </l2t-paper-slider>
   <template is="dom-repeat" items="{{news}}">
-    <card-news title="{{item.title}}" image="{{item.image}}" description="{{item.description}}"></card-news>
+    <card-news        
+     id="{{index}}"
+     title="{{item.title}}" 
+     image="{{item.image}}" 
+     description="{{item.description}}">
+    </card-news>
   </template>
   </template>
   <script src="./app-home.js"></script>
