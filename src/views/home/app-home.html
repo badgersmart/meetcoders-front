@@ -1,18 +1,38 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../../bower_components/l2t-paper-slider/l2t-paper-slider.html">
+<link rel="import" href="./components/card-news/card-news.html">
 <link rel="import" href="./home-style.html">
 
 <dom-module id="app-home">
   <template>
-    <style include="home-style"></style>
-
-    <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-    </div>
-
+  <style include="home-style"></style>
+    <iron-ajax
+    auto
+    url="./news.json"
+    handle-as="json"
+    last-response="{{news}}"></iron-ajax>
+    <iron-ajax
+    auto
+    url="./sliderImage.json"
+    handle-as="json"
+    last-response="{{sliderImage}}"></iron-ajax>
+  <l2t-paper-slider class="sliders" total-slides="{{imagesSize}}">
+    <template is="dom-repeat" items="{{sliderImage}}" as="images">
+      <paper-slide 
+        style="background-image: url('https://placeholdit.imgix.net/~text?txtsize=28&amp;bg=DCEDC8&amp;txtclr=212121&amp;txt=300%C3%97300&amp;w=300&amp;h=300&amp;fm=png');">
+      </paper-slide>
+    </template>
+  </l2t-paper-slider>
+  <template is="dom-repeat" items="{{news}}">
+    <card-news        
+     id="{{index}}"
+     title="{{item.title}}" 
+     image="{{item.image}}" 
+     description="{{item.description}}">
+    </card-news>
   </template>
-
+  </template>
   <script src="./app-home.js"></script>
 </dom-module>
